@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Mortgage repayment calculator</title>
+
+    <link rel="stylesheet" href="./src/output.css" />
+  </head>
+  <body class="*:font-medium">
+    <main class="bg-white rounded-xl flex">
+      <section class="p-5">
+        <div
+          class="mb-5 w-full flex sm:items-center sm:justify-between max-sm:flex-col"
+        >
+          <h1 class="capitalize text-slate-500 font-bold text-xl">
+            mortgage calculator
+          </h1>
+          <button
+            id="clearButton"
+            class="underline cursor-pointer capitalize text-sm text-slate-200 w-max"
+          >
+            clear all
+          </button>
+        </div>
+        <!-- mortgage amount  -->
+        <label
+          for="mortgageAmount"
+          class="mb-2 block capitalize text-slate-300 text-sm"
+          >mortgage amount
+        </label>
+        <div
+          class="input-container flex w-full h-8 rounded border border-slate-200 *:duration-300"
+        >
+          <span
+            class="h-full w-max px-2 flex items-center font-bold text-slate-400 justify-center bg-slate-200"
+          >
+            £
+          </span>
+          <input
+            type="number"
+            min="0"
+            id="mortgageAmount"
+            class="grow outline-none h-full px-4"
+          />
+        </div>
+        <p class="text-red text-[12px] mt-2 hidden">This field is required</p>
+        <!-- two row inputs -->
+        <div class="w-full flex max-sm:flex-col items-center h-max gap-2 my-5">
+          <div class="grow h-max w-1/2 max-sm:w-full">
+            <!-- mortgage term  -->
+            <label
+              for="mortgageTerm"
+              class="mb-2 block capitalize text-slate-300 text-sm"
+              >mortgage term
+            </label>
+            <div
+              class="input-container flex h-8 rounded border border-slate-200 *:duration-300"
+            >
+              <input
+                type="number"
+                min="1"
+                id="mortgageTerm"
+                class="w-full outline-none h-full px-4"
+              />
+              <span
+                class="h-full text-sm w-max px-2 flex items-center font-bold text-slate-400 justify-center bg-slate-200"
+              >
+                years
+              </span>
+            </div>
+            <p class="text-red text-[12px] mt-2 hidden">
+              This field is required
+            </p>
+          </div>
+          <div class="grow h-max w-1/2 max-sm:w-full">
+            <!-- interest Rate  -->
+            <label
+              for="interestRate"
+              class="mb-2 block capitalize text-slate-300 text-sm"
+              >interest rate
+            </label>
+            <div
+              class="input-container flex h-8 rounded border border-slate-200 *:duration-300"
+            >
+              <input
+                type="number"
+                min="0"
+                max="100"
+                id="interestRate"
+                class="w-full outline-none h-full px-4"
+              />
+              <span
+                class="h-full w-max px-2 flex items-center font-bold text-slate-400 justify-center bg-slate-200"
+              >
+                %
+              </span>
+            </div>
+            <p class="text-red text-[12px] mt-2 hidden">
+              This field is required
+            </p>
+          </div>
+        </div>
+        <!-- check box inputs -->
+        <p class="text-slate-300 text-sm mb-2">Mortgage Type</p>
+        <div class="w-full h-max" id="mortgageTypeContainer">
+          <label
+            for="repayment"
+            class="mb-2 cursor-pointer w-full px-2 h-8 border border-slate-200 rounded flex items-center text-slate-300 text-sm"
+          >
+            <input
+              type="radio"
+              id="repayment"
+              name="mortgageType"
+              value="repayment"
+              class="mr-2 checked:accent-lime/10"
+            />
+            <p>Repayment</p>
+          </label>
+          <label
+            for="interestOnly"
+            class="mb-2 cursor-pointer w-full px-2 h-8 border border-slate-200 rounded flex items-center text-slate-300 text-sm"
+          >
+            <input
+              type="radio"
+              id="interestOnly"
+              name="mortgageType"
+              value="interestOnly"
+              class="mr-2 checked:accent-lime/10"
+            />
+            <p>Interest Only</p>
+          </label>
+          <p class="text-red text-[12px] hidden" id="typeError">
+            This field is required
+          </p>
+        </div>
+        <!-- button -->
+        <button
+          id="submitButton"
+          class="px-5 py-2 cursor-pointer hover:bg-lime/70 duration-300 font-bold text-slate-500 flex items-center gap-2 capitalize rounded-4xl bg-lime"
+        >
+          <img src="assets/images/icon-calculator.svg" alt="" />
+          <p class="text-sm">calculate repayment</p>
+        </button>
+      </section>
+      <section
+        class="p-5 bg-slate-500 rounded-xl sm:rounded-bl-[62px] max-sm:!rounded-none max-sm:mt-auto"
+      >
+        <div
+          id="completeTemplate"
+          class="w-full h-full max-sm:h-max py-5 hidden"
+        >
+          <h1 class="text-white font-bold text-2xl mb-5">Your results</h1>
+          <p class="text-slate-200 mb-5">
+            Your results are shown below based on the information you provided.
+            To adjust the results, edit the form and click “calculate
+            repayments” again.
+          </p>
+          <div
+            class="w-full h-max p-5 rounded-md border-t-2 border-lime shadow bg-slate-900"
+          >
+            <p class="text-slate-200 text-sm mb-5">Your monthly repayments</p>
+            <h1
+              class="text-4xl text-lime w-full font-bold border-white/50 border-b pb-10 mb-10"
+            >
+              £ <span id="monthlyPaymentResult">1,234.74</span>
+            </h1>
+            <p class="text-slate-200 text-sm mb-2">
+              Total you'll repay over the term
+            </p>
+            <p class="text-white font-bold text-xl">
+              £ <span id="termPaymentResult">123,345.67</span>
+            </p>
+          </div>
+        </div>
+        <div
+          id="emptyTemplate"
+          class="w-full h-full max-sm:h-max py-5 text-center"
+        >
+          <img
+            src="assets/images/illustration-empty.svg"
+            class="w-1/2 mb-6 mx-auto"
+            alt=""
+          />
+          <h2 class="text-white font-bold text-2xl mb-5">Results shown here</h2>
+          <p class="text-slate-200">
+            Complete the form and click “calculate repayments” to see what your
+            monthly repayments would be.
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="src/action.js"></script>
+
+    <script src="./src/action.js"></script>
+  </body>
+</html>

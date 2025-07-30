@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Custom color variables */
+@theme {
+  --color-lime: hsl(61, 70%, 52%);
+  --color-red: hsl(4, 69%, 50%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-slate-100: hsl(202, 86%, 94%);
+  --color-slate-200: hsl(203, 41%, 72%);
+  --color-slate-300: hsl(200, 26%, 54%);
+  --color-slate-400: hsl(200, 24%, 40%);
+  --color-slate-500: hsl(202, 55%, 16%);
+
+  --breakpoint-sm: 48rem;
+}
+@layer base {
+  body {
+    @apply font-['Plus_Jakarta_Sans'] overflow-x-hidden flex font-medium w-screen h-screen max-sm:h-max min-h-screen bg-slate-100;
+  }
+  section {
+    @apply w-1/2 h-full max-sm:w-full max-sm:!h-max;
+  }
+  main {
+    @apply m-auto w-[80vw] max-sm:w-full max-sm:flex-col h-[90vh] max-sm:min-h-screen max-sm:h-max;
+  }
+}
